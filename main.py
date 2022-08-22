@@ -1,5 +1,4 @@
 import random
-
 def RunGame():
 
     def CreateDeck():
@@ -34,5 +33,36 @@ def RunGame():
                 deal_number += 1
         return (players)
     players = deal_cards(shuffled_deck)
-    print(players)
+
+    def check_pairs(players):
+        player_one_pairs = 0
+        player_two_pairs = 0
+        player_three_pairs = 0
+        player_four_pairs = 0
+        list_of_player_pairs = [player_one_pairs, player_two_pairs, player_three_pairs, player_four_pairs]
+        index_number = 0
+        for player in players:
+            for string in range(len(player)):
+                if player[string] == player[string-1] or player[string] == player[string-2] or player[string] == player[string-3] or player[string] == player[string-4]:
+                    list_of_player_pairs[index_number] +=1
+                if string == 4:
+                    list_of_player_pairs[index_number] /= 2
+                    index_number += 1
+        return list_of_player_pairs
+    pairs = check_pairs(players)
+   
+    print(f"""Welcome to the Player Pairs, where the most pairs win! You will get 5 cards.
+    Player 1's hand:
+    {players[0]}
+    Player Pairs: {pairs[0]}
+    Player 2's hand:
+    {players[1]}
+    Player Pairs: {pairs[1]}
+    Player 3's hand:
+    {players[2]}
+    Player Pairs: {pairs[2]}
+    Player 4's hand:
+    {players[3]} 
+    Player Pairs:{pairs[3]} """)
+
 RunGame()
