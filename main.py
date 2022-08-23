@@ -75,7 +75,16 @@ def RunGame():
                 check_number += 1
             else:
                 player_winner_number.append(check_number)
+                check_number += 1
         return player_winner_number
-    check_winner(pairs)
+    winner = check_winner(pairs)
+    
+    def check_for_tie(winner):
+        if len(winner) >= 2:
+            (print(f"There was a tie between Players: {winner}"))
+        else:
+            print(f"The winner is Player:{winner}")
+
+    check_for_tie(winner)
 
 RunGame()
