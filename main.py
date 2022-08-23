@@ -50,7 +50,7 @@ def RunGame():
                     index_number += 1
         return list_of_player_pairs
     pairs = check_pairs(players)
-   
+
     print(f"""Welcome to the Player Pairs, where the most pairs win! You will get 5 cards.
     Player 1's hand:
     {players[0]}
@@ -64,5 +64,18 @@ def RunGame():
     Player 4's hand:
     {players[3]} 
     Player Pairs:{pairs[3]} """)
+
+    def check_winner(list_of_pairs):
+        player_one_winner = False
+        check_number = 1
+        player_winner_number = []
+        for pair_number in range(len(list_of_pairs)):
+            if list_of_pairs[pair_number] <= (list_of_pairs[pair_number-1]-1) or list_of_pairs[pair_number] <= (list_of_pairs[pair_number -2]-1) or list_of_pairs[pair_number] <= (list_of_pairs[pair_number -3]-1):
+                player_one_winner = False
+                check_number += 1
+            else:
+                player_winner_number.append(check_number)
+        return player_winner_number
+    check_winner(pairs)
 
 RunGame()
