@@ -102,45 +102,49 @@ def check_for_tie(winner):
         print(f"The winner is Player:{winner}")
 
 def run_game():
-    game_deck = create_deck()
-    shuffled_deck = randomize_deck(game_deck)
-    player_count = input("Welcome to the Player Pairs, where the most pairs win! You will get 5 cards. How many players?:")
-    players = deal_cards(shuffled_deck, player_count)
-    pairs = check_pairs(players)
-    if player_count == '2':
-        print(f"""These are the results!
-Player 1's hand:
-{players[0]}
-Player Pairs: {pairs[0]}
-Player 2's hand:
-{players[1]}
-Player Pairs: {pairs[1]}""")
-    elif player_count == '3':
-        print(f"""Welcome to the Player Pairs, where the most pairs win! You will get 5 cards.
-Player 1's hand:
-{players[0]}
-Player Pairs: {pairs[0]}
-Player 2's hand:
-{players[1]}
-Player Pairs: {pairs[1]}
-Player 3's hand:
-{players[2]}
-Player Pairs: {pairs[2]} """)
-    elif player_count == '4':
-         print(f"""Welcome to the Player Pairs, where the most pairs win! You will get 5 cards.
-Player 1's hand:
-{players[0]}
-Player Pairs: {pairs[0]}
-Player 2's hand:
-{players[1]}
-Player Pairs: {pairs[1]}
-Player 3's hand:
-{players[2]}
-Player Pairs: {pairs[2]}
-Player 4's hand:
-{players[3]} 
-Player Pairs:{pairs[3]} """)
-    winner = check_winner(pairs)
-    check_for_tie(winner)
+    number_of_rounds = int(input("Welcome to the Player Pairs, where the most pairs win! You will get 5 cards. How many rounds would you like to play?:"))
+    round_number = 0
+    while number_of_rounds != round_number:
+        game_deck = create_deck()
+        shuffled_deck = randomize_deck(game_deck)
+        player_count = input("How many players are there? Minimum 2:")
+        players = deal_cards(shuffled_deck, player_count)
+        pairs = check_pairs(players)
+        if player_count == '2':
+            print(f"""These are the results!
+    Player 1's hand:
+    {players[0]}
+    Player Pairs: {pairs[0]}
+    Player 2's hand:
+    {players[1]}
+    Player Pairs: {pairs[1]}""")
+        elif player_count == '3':
+            print(f"""Welcome to the Player Pairs, where the most pairs win! You will get 5 cards.
+    Player 1's hand:
+    {players[0]}
+    Player Pairs: {pairs[0]}
+    Player 2's hand:
+    {players[1]}
+    Player Pairs: {pairs[1]}
+    Player 3's hand:
+    {players[2]}
+    Player Pairs: {pairs[2]} """)
+        elif player_count == '4':
+            print(f"""Welcome to the Player Pairs, where the most pairs win! You will get 5 cards.
+    Player 1's hand:
+    {players[0]}
+    Player Pairs: {pairs[0]}
+    Player 2's hand:
+    {players[1]}
+    Player Pairs: {pairs[1]}
+    Player 3's hand:
+    {players[2]}
+    Player Pairs: {pairs[2]}
+    Player 4's hand:
+    {players[3]} 
+    Player Pairs:{pairs[3]} """)
+        winner = check_winner(pairs)
+        check_for_tie(winner)
+        round_number += 1
 
 run_game()
